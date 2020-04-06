@@ -14,14 +14,14 @@ with open(r"PyBank\Resources\budget_data.csv") as csvfile:
     #count number of months
     tmonths = len(list(csvreader))
     print(tmonths)
-
     #define variables in for loop
    
-    grinc = 0
-    grdec = 0
+    #grinc = 0
+    #grdec = 0
     #total profits
     tprofit = sum(float(row[1]) for row in csvreader)
     print(tprofit)
+
 #calc avg change per month
 
 #find greatest monthly increase
