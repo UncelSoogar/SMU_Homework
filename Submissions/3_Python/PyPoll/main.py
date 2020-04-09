@@ -27,8 +27,11 @@ with open(r"PyPoll\Resources\election_data.csv") as csvfile:
     for _ in candidate:
         if _ not in uniquename: 
             uniquename.append(_) 
-#assign results to variables
-    for in uniquename: 
+#find counts for each candidate
+#    for word in candidate:
+    for i in range(len(uniquename)):
+        print(f"{uniquename[i]} received {candidate.count(uniquename[i])} votes.")
+
         
 
 # #calc total profits, tmonths is also the end value of the range
