@@ -12,6 +12,7 @@ with open(r"PyPoll\Resources\election_data.csv") as csvfile:
     #county = []
     candidate= []
     uniquename = []
+    uniquevotes= []
     
     for row in csvreader:
         voterid.append(row[0])
@@ -20,60 +21,40 @@ with open(r"PyPoll\Resources\election_data.csv") as csvfile:
     
 #calc total votes
     tvotes = len(voterid)
-    print(tvotes)
 
 #separate and count each candidate
     #find unique names
     for _ in candidate:
         if _ not in uniquename: 
             uniquename.append(_) 
-#find counts for each candidate
-#    for word in candidate:
+#find counts for each candidate and assign to uniquevotes
     for i in range(len(uniquename)):
-        print(f"{uniquename[i]} received {candidate.count(uniquename[i])} votes.")
+        uniquevotes.append(candidate.count(uniquename[i]))
+#find max value and index to recall winning name
+    winner = uniquevotes.index(max(uniquevotes))
 
-        
 
-# #calc total profits, tmonths is also the end value of the range
-#     #starting variable values
-#     tprofit = 0
-#     #loop to add profits
-#     for _ in range(0, tmonths):
-#         tprofit += int(profit[_])
-#         currentprofit = int(profit[_])
-#     #loop to calc and store profit change    
-#         lastprofit = int(profit[_ - 1])
-#         profitchange.append(currentprofit - lastprofit)
 
-# #avg profit change, loop to total changes, divide by (tmonths -1).
-#     tchange = 0
-#     for _ in range(1, tmonths):
-#         tchange += int(profitchange[_])
-#     avgchange = tchange / (tmonths - 1)
-
-# #find greatest monthly increase and decrease.
-#     increase = max(profitchange)
-#     decrease = min(profitchange)
-
-# #find month with index
-#     increasemonth = month[(profitchange.index(increase))]
-#     decreasemonth = month[(profitchange.index(decrease))]
-
-# #print calcs to terminal
-#     print("Financial Analysis")
-#     print("***********************************************")
-#     print(f"Total Months: {tmonths}")
-#     print(f"Total Profit: {tprofit}")
-#     print(f"Average Monthly Change: ${avgchange}")
-#     print(f"Greatest Monthly Increase: {increasemonth} $({increase})")
-#     print(f"Greatest Monthly Decrease: {decreasemonth} $({decrease})")
+# #print to terminal
+    print("Election Results")
+    print("******************************************")
+    print(f"Total votes: {tvotes}")
+    print("******************************************")
+    #loop for each candidate
+    for i in range(len(uniquename)):
+        print(f"{uniquename[i]} won {round(100* uniquevotes[i] / tvotes, 2)}% ({uniquevotes[i]}) of the vote.")
+    print("******************************************")
+    print(f"{uniquename[winner]} wins the election with {uniquevotes[winner]} votes!")
 
 # #write calcs to .txt
-# outputtxt = open(r"PyBank\Financials.txt", "w")
-# outputtxt.write("Financial Analysis \n")
-# outputtxt.write("*********************************************** \n")
-# outputtxt.write(f"Total Months: {tmonths} \n")
-# outputtxt.write(f"Total Profit: {tprofit} \n")
-# outputtxt.write(f"Average Monthly Change: ${avgchange} \n")
-# outputtxt.write(f"Greatest Monthly Increase: {increasemonth} $({increase}) \n")
-# outputtxt.write(f"Greatest Monthly Decrease: {decreasemonth} $({decrease}) \n")
+    outputtxt = open(r"PyPoll\ElectionResults.txt", "w")
+
+    outputtxt.write("Election Results \n")
+    outputtxt.write("****************************************** \n")
+    outputtxt.write(f"Total votes: {tvotes} \n")
+    outputtxt.write("****************************************** \n")
+    #loop for each candidate
+    for i in range(len(uniquename)):
+        outputtxt.write(f"{uniquename[i]} won {round(100* uniquevotes[i] / tvotes, 2)}% ({uniquevotes[i]}) of the vote. \n")
+    outputtxt.write("****************************************** \n")
+    outputtxt.write(f"{uniquename[winner]} wins the election with {uniquevotes[winner]} votes!")
