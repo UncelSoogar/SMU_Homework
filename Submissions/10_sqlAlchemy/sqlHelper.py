@@ -17,7 +17,7 @@ class SQLHelper():
                         s.id as station_id,
                         s.station,
                         s.name,
-                        m.prcp
+                        m.prcp as precipitation
                     FROM
                         measurement as m
                     JOIN station as s ON s.station = m.station
@@ -53,7 +53,7 @@ class SQLHelper():
                         s.station,
                         s.name,
                         m.date,
-                        m.tobs                    
+                        m.tobs as temp                   
 
                     FROM
                         station as s
