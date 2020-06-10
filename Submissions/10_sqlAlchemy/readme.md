@@ -1,6 +1,6 @@
 #Hawaiian Weather Analysis
 ---
->Bonus work not yet completed
+Bonus work not yet completed
 ---
 # File Guide
 ---
