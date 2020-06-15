@@ -7,3 +7,7 @@
     border-width: 5px;
     border-style: double;
 }
+
+.footer_links {
+    text-align: right;
+}
