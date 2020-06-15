@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lat v Temp</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type=text/css href="https://bootswatch.com/4/yeti/bootstrap.min.css">
+</head>
+
+<body>
+    <!--NAVBAR: Need to change "Navbar to logo, change Plots to dropdown menu. Add links-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="margin-bottom: 30px;">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <!--Different shade to denote current page-->
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Plots</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Comparison</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Frankie MacDonald Weather</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--Conent Boxes-->
+    <div class="container-fluid">
+        <div class="row">
+            <!--Summary Box: NEED TO ADD, BODY TEXT, BODY IMAGE-->
+            <div class="col-md-8">
+                <div class="card text-white bg-info mb-3">
+                    <div class="card-header">What's with the Latitude?</div>
+                    <div class="card-body">
+                        <h4 class="card-title">How latitude relates the weather</h4>
+                        <p class="card-text"> up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!--Visualizations Box: Make images clickable links-->
+            <div class="col-md-4">
+                <div class="card text-white bg-info mb-3">
+                    <div class="card-header">Visualizations</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 class="card-title">Click Image for more detailed info</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <img class="image_side image_side_border" src=" ..\Resources\assets\images\Fig1.png ">
+                                <p class="subtitle">Latitude vs Max Temperature</p>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <a href="humid.html"><img class="image_side" src=" ..\Resources\assets\images\Fig2.png "></a>
+                                <p class="subtitle">Latitude vs Humidity</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <a href="cloud.html"><img class="image_side" src=" ..\Resources\assets\images\Fig3.png "></a>
+                                <p class="subtitle">Latitude vs Cloudiness</p>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <a href="wind.html"><img class="image_side" src=" ..\Resources\assets\images\Fig4.png "></a>
+                                <p class="subtitle">Latitude vs Wind Speed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div>
+            <!--Visualizations box-->
+            <div>
+                <!--Heading-->
+            </div>
+            <!--Visualizations as links-->
+        </div>
+
+        <div>
+            <!--Footer, contact, etc fake copyright-->
+        </div>
+</body>
+
+
+
+</html>

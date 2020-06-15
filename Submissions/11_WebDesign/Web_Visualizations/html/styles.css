@@ -1,0 +1,9 @@
+.image_side {
+    width: 100%
+}
+
+.image_side_border {
+    border-color: red;
+    border-width: 5px;
+    border-style: double;
+}
