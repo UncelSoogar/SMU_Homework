@@ -13,9 +13,8 @@
 </head>
 
 <body>
-    <!--NAVBAR: Need to change "Navbar to logo-->
+    <!--NAVBAR-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="margin-bottom: 30px;">
-        <!--Insert logo image below-->
         <a class="navbar-brand" href="homepage.html"><img src="..\Resources\assets\images\frankie.png" width="50px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -24,7 +23,6 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <!--Different shade to denote current page-->
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <!--DROPDOWN FOR PLOT LINKS-->
@@ -49,23 +47,26 @@
             </ul>
         </div>
     </nav>
-    <!--Conent Boxes-->
+    <!--Conent Boxes: Sumary box md-8, visualization box mb-4 w/ 2x mb-6 cols-->
     <div class="container-fluid">
         <div class="row">
-            <!--Summary Box: NEED TO ADD, BODY TEXT, BODY IMAGE-->
+            <!--Summary Box-->
             <div class="col-md-8">
                 <div class="card text-white bg-info mb-3">
                     <div class="card-header">
                         <h2>What's with the Latitude?</h2>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">How latitude relates the weather</h4>
-                        <p class="card-text"> Take text from report on weather from HW 5.</p>
+                        <h4 class="card-title">How can latitude help Frankie MacDonald report the weather</h4>
+                        <p class="card-text"> Frankie MacDonald is the world’s most energetic meteorologist. But covering major storms across the globe is a difficult task for even the best freelance weatherman. The aim of this project is to determine if latitude is a good
+                            measure for predicting weather in terms of temperature, humidity, cloudiness, and wind speed.
+                            <br> Data was collected from 500 cities using openweather API. Matplotlib was then used to visualize the relationships with latitude. Use the above menu to navigate to these visualizations, and the cleaned data table.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!--Visualizations Box-->
+            <!--Visualizations Box: nest 2x mb-6 inside of remaining mb-4 -->
             <div class="col-md-4">
                 <div class="card text-white bg-info mb-3">
                     <div class="card-header">
@@ -104,19 +105,17 @@
             </div>
 
         </div>
-
-        <div>
-            <!--Footer-->
-            <footer class=" container-fluid alert alert-secondary">
-                <span>
-                    &copy Christopher Lichliter & The North Texas Frankie MacDonald Fan Club.   <a href="mailto: lichliter@ymail.com">Email</a>   <a href="https://github.com/UncelSoogar">GitHub</a>
-                </span>
-            </footer>
-        </div>
+    </div>
+    <!--Footer-->
+    <div>
+        <footer class=" container-fluid alert alert-secondary">
+            <span>
+                &copy Christopher Lichliter & The North Texas Frankie MacDonald Fan Club.   <a href="mailto: lichliter@ymail.com">Email</a>   <a href="https://github.com/UncelSoogar">GitHub</a>
+            </span>
+        </footer>
+    </div>
 
 
 </body>
-
-
 
 </html>

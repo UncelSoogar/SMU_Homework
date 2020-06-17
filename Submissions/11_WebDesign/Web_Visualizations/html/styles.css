@@ -3,11 +3,15 @@
 }
 
 .image_side_border {
-    border-color: red;
+    border-color: rgb(59, 59, 59);
     border-width: 5px;
     border-style: double;
 }
 
-.footer_links {
-    text-align: right;
+.subtitle {
+    text-align: center;
+}
+
+.table_styling {
+    text-align: center
 }
