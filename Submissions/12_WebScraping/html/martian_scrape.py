@@ -5,21 +5,23 @@ from splinter import Browser
 import datetime as datetime
 import time
 import json
+import re
 
 #scrapping function
 
 def mars_attacks ():
     #S/U chromedriver. Change headless after testing
-    executable_path = {'executable_path':"../../resources/chromedriver.exe"}
-    browser = Browser('chrome', **executable_path, headless=False)
+    executable_path = {'executable_path':"C:/Users/slapp/Desktop/SMU_Homework/Submissions/12_WebScraping/resources/chromedriver.exe"}
+    browser = Browser('chrome', **executable_path, headless=True)
     
     #Navigate to scrape news page. Pause for 1 second before grabbing data.
     url = "https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest"
     browser.visit(url)
-    time.sleep(1)
+    time.sleep(2)
     html = browser.html
     soup = BeautifulSoup(html, 'lxml')
     #Grab Headline, Abstract, and URL.
+    articles= soup.find_all(class_ = "slide")
     headline = articles[0].find(class_= "content_title").text.replace("\n", "")
     abstract = articles[0].find(class_ = "rollover_description_inner").text.replace("\n", "")
     articleURL = f"https://mars.nasa.gov{articles[0].find(class_ = 'content_title').a['href']}"
@@ -27,7 +29,7 @@ def mars_attacks ():
     #Navigate to scrape feature image
     img_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
     browser.visit(img_url)
-    time.sleep(1)
+    time.sleep(2)
     html = browser.html
     soup = BeautifulSoup(html, 'lxml')
     #Grab img url, clean and add to base url
@@ -38,7 +40,7 @@ def mars_attacks ():
     #scrap mars weather from tweeterz
     tweet_url = "https://twitter.com/marswxreport?lang=en"
     browser.visit(tweet_url)
-    time.sleep(1)
+    time.sleep(2)
     html = browser.html
     soup = BeautifulSoup(html, 'lxml')
     #collect all spans to find tweets
@@ -61,7 +63,7 @@ def mars_attacks ():
     #Navigate to scrape table from facts page
     facts_url = "https://space-facts.com/mars/"
     browser.visit(facts_url)
-    time.sleep(1)
+    time.sleep(2)
     html = browser.html
     soup = BeautifulSoup(html, 'lxml')
     #read html tables into df. Select table and rename columns
@@ -76,7 +78,7 @@ def mars_attacks ():
     #Navigate to hemisphere page.
     hemiURL = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(hemiURL)
-    time.sleep(1)
+    time.sleep(2)
     html = browser.html
     soup = BeautifulSoup(html, 'lxml')
     #Scrape url for each hemisphere page. Loop to create full url
@@ -89,11 +91,12 @@ def mars_attacks ():
     hemi_imgs = []
     for link in hemi_urls:
         browser.visit(link)
-        time.sleep(1)
+        time.sleep(2)
         html = browser.html
         soup = BeautifulSoup(html, 'lxml')
         hemi_titles.append(soup.title.text.split(" |")[0])
         hemi_imgs.append(soup.find(class_ = 'downloads').find('a')['href'])
+    hemis = {'title': hemi_titles, 'hemi_img_url': hemi_imgs}
 
     #close browser
     browser.quit()
@@ -108,8 +111,7 @@ def mars_attacks ():
         'tweet_url': tweetbook,
         'facts': fact_html,
         'json_facts': fact_json,
-        'hemisphere_title': hemi_titles,
-        'hemisphere_img': hemi_imgs,
+        'hemispheres' : hemis,
         #define as active
         'active': 1,
         #timestamp
@@ -118,5 +120,6 @@ def mars_attacks ():
     
     return rtnDict
 
+#print to test script
 if __name__ == "__main__":
     print(mars_attacks())

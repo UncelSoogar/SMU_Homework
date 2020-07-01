@@ -5,18 +5,18 @@ import martian_scrape
 
 app = Flask(__name__)
 
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/mars_app'
-monto = PyMongo(app)
+app.config["MONGO_URI"] = "mongodb://localhost:27017/mars_app"
+mongo = PyMongo(app)
 
 #homepage, intial data
-@app.route('/')
+@app.route("/")
 def index():
-    mars = mongo.db.mars.find_one{'active': 1})
+    mars = mongo.db.mars.find_one({"active": 1})
     return render_template('index.html', mars=mars)
 
 #perform on button click
 
-@app.route('/scrape')
+@app.route("/scrape")
 def scrape():
     mars_app = mongo.db.mars
     mars = martian_scrape.mars_attacks()
@@ -30,10 +30,10 @@ def scrape():
     )
 
     #insert new data
-    mars_app.instert_one(mars)
+    mars_app.insert_one(mars)
 
     #redirect to index
     return redirect('/')
 
 if __name__ == "__main__":
-    app.run
+    app.run()
