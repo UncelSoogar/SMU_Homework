@@ -1,7 +1,8 @@
 // from data.js
 var tableData = data;
 
-// Append table to homepage. Append rows to table with a loop
+
+// Append full table to homepage. Append rows to table with a loop
 data.forEach((conspiracy) => {
     var row = d3.select('tbody').append("tr");
     Object.entries(conspiracy).forEach(([key, value]) => {
@@ -33,12 +34,20 @@ function all_filter() {
     // Nobody likes fresca
     d3.event.preventDefault();
 
-    // Select, save, and filter date input.
+    // Select and save date input.
     var input_date = d3.select("#datetime");
-    var date_value = input_date.property("value");
+    var temp_date_value = input_date.property("value");
 
-    // Conditional statement. If input is not empty, filter for input.
-    if (date_value != '') {
+    // Conditional statement. If input is not empty, reformat date and filter.
+
+    if (temp_date_value != '') {
+
+        // convert to timestamp, and reformat to (m/d/yyyy)
+        var timestamp = Date.parse(temp_date_value);
+        var date_value = moment(timestamp).format("M/D/YYYY");
+        console.log(date_value);
+
+        //filter on reformated date
         var ufo_date = tableData.filter(tableData => tableData.datetime === date_value);
     }
     //If input empty, save full table to same variable
@@ -103,221 +112,3 @@ function all_filter() {
         });
     });
 };
-
-
-// Code used for testing individual filters
-
-// function date_filter() {
-//     // Nobody likes fresca
-//     d3.event.preventDefault();
-
-//     // Select date input field
-//     var input_date = d3.select("#datetime");
-
-//     // Save the date from the input
-//     var date_value = input_date.property("value");
-
-//     // Conditional statement. If input is empty, return full table.
-//     if (date_value != '') {
-//         //Use saved date to filter
-//         var ufo_date = tableData.filter(tableData => tableData.datetime === date_value);
-
-//         //clear table of all rows inside body
-//         d3.select('tbody').selectAll('tr').remove();
-
-//         //Write filtered data to table
-//         ufo_date.forEach((conspiracy) => {
-//             var row = d3.select('tbody').append("tr");
-//             Object.entries(conspiracy).forEach(([key, value]) => {
-//                 var cell = row.append("td");
-//                 cell.text(value);
-//             });
-//         });
-//     }
-
-//     // Else: return full table
-//     else {
-//         //Write filtered data to table
-//         tableData.forEach((conspiracy) => {
-//             var row = d3.select('tbody').append("tr");
-//             Object.entries(conspiracy).forEach(([key, value]) => {
-//                 var cell = row.append("td");
-//                 cell.text(value);
-//             });
-
-//         });
-//     };
-// };
-
-// // city filter
-
-// function city_filter() {
-//     // Nobody likes fresca
-//     d3.event.preventDefault();
-
-//     // Select date input field
-//     var input_city = d3.select("#city");
-
-//     // Save the date from the input. Change to lowercase
-//     var city_value = input_city.property("value").toLowerCase();
-
-//     // Conditional statement. If input is empty, return full table.
-//     if (city_value != '') {
-//         //Use saved date to filter
-//         var ufo_city = tableData.filter(tableData => tableData.city === city_value);
-
-//         //clear table of all rows inside body
-//         d3.select('tbody').selectAll('tr').remove();
-
-//         //Write filtered data to table
-//         ufo_city.forEach((conspiracy) => {
-//             var row = d3.select('tbody').append("tr");
-//             Object.entries(conspiracy).forEach(([key, value]) => {
-//                 var cell = row.append("td");
-//                 cell.text(value);
-//             });
-//         });
-//     }
-
-//     // Else: return full table
-//     else {
-//         //Write filtered data to table
-//         tableData.forEach((conspiracy) => {
-//             var row = d3.select('tbody').append("tr");
-//             Object.entries(conspiracy).forEach(([key, value]) => {
-//                 var cell = row.append("td");
-//                 cell.text(value);
-//             });
-
-//         });
-//     };
-// };
-
-// //state filter
-// function state_filter() {
-//     // Nobody likes fresca
-//     d3.event.preventDefault();
-
-//     // Select date input field
-//     var input_state = d3.select("#state");
-
-//     // Save the city from the input. Change to lowercase
-//     var state_value = input_state.property("value").toLowerCase();
-
-//     // Conditional statement. If input is empty, return full table.
-//     if (state_value != '') {
-//         //Use saved date to filter
-//         var ufo_state = tableData.filter(tableData => tableData.state === state_value);
-
-//         //clear table of all rows inside body
-//         d3.select('tbody').selectAll('tr').remove();
-
-//         //Write filtered data to table
-//         ufo_state.forEach((conspiracy) => {
-//             var row = d3.select('tbody').append("tr");
-//             Object.entries(conspiracy).forEach(([key, value]) => {
-//                 var cell = row.append("td");
-//                 cell.text(value);
-//             });
-//         });
-//     }
-
-//     // Else: return full table
-//     else {
-//         //Write filtered data to table
-//         tableData.forEach((conspiracy) => {
-//             var row = d3.select('tbody').append("tr");
-//             Object.entries(conspiracy).forEach(([key, value]) => {
-//                 var cell = row.append("td");
-//                 cell.text(value);
-//             });
-
-//         });
-//     };
-// };
-
-// //country filter
-// function country_filter() {
-//     // Nobody likes fresca
-//     d3.event.preventDefault();
-
-//     // Select date input field
-//     var input_country = d3.select("#country");
-
-//     // Save the country from the input. Change to lowercase
-//     var country_value = input_country.property("value").toLowerCase();
-
-//     // Conditional statement. If input is empty, return full table.
-//     if (country_value != '') {
-//         //Use saved date to filter
-//         var ufo_country = tableData.filter(tableData => tableData.country === country_value);
-
-//         //clear table of all rows inside body
-//         d3.select('tbody').selectAll('tr').remove();
-
-//         //Write filtered data to table
-//         ufo_country.forEach((conspiracy) => {
-//             var row = d3.select('tbody').append("tr");
-//             Object.entries(conspiracy).forEach(([key, value]) => {
-//                 var cell = row.append("td");
-//                 cell.text(value);
-//             });
-//         });
-//     }
-
-//     // Else: return full table
-//     else {
-//         //Write filtered data to table
-//         tableData.forEach((conspiracy) => {
-//             var row = d3.select('tbody').append("tr");
-//             Object.entries(conspiracy).forEach(([key, value]) => {
-//                 var cell = row.append("td");
-//                 cell.text(value);
-//             });
-
-//         });
-//     };
-// };
-
-// // shape filter
-// function shape_filter() {
-//     // Nobody likes fresca
-//     d3.event.preventDefault();
-
-//     // Select date input field
-//     var input_shape = d3.select("#shape");
-
-//     // Save the shape from the input. Change to lowercase
-//     var shape_value = input_shape.property("value").toLowerCase();
-
-//     // Conditional statement. If input is empty, return full table.
-//     if (shape_value != '') {
-//         //Use saved date to filter
-//         var ufo_shape = tableData.filter(tableData => tableData.shape === shape_value);
-
-//         //clear table of all rows inside body
-//         d3.select('tbody').selectAll('tr').remove();
-
-//         //Write filtered data to table
-//         ufo_shape.forEach((conspiracy) => {
-//             var row = d3.select('tbody').append("tr");
-//             Object.entries(conspiracy).forEach(([key, value]) => {
-//                 var cell = row.append("td");
-//                 cell.text(value);
-//             });
-//         });
-//     }
-
-//     // Else: return full table
-//     else {
-//         //Write filtered data to table
-//         tableData.forEach((conspiracy) => {
-//             var row = d3.select('tbody').append("tr");
-//             Object.entries(conspiracy).forEach(([key, value]) => {
-//                 var cell = row.append("td");
-//                 cell.text(value);
-//             });
-
-//         });
-//     };
-// };
