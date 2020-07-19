@@ -1,0 +1,7 @@
+.jumboimg {
+    background-image: url("https://www.nationalgeographic.com/content/dam/news/photos/000/611/61192.ngsversion.1421961685985.adapt.1900.1.jpg");
+    background-size: cover;
+    height: 100%;
+    color: #337ab7;
+    text-shadow: 3px 3px black;
+}
